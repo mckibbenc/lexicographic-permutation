@@ -19,7 +19,7 @@ def calcPermsRecursive(n):
         return 1
 
 # Get the nth permutation of the input character array, where
-# permutation 1 is the same as the input.
+# permutation 1 is the input character array.
 
 
 def getNthPermutation(chars, n):
@@ -41,7 +41,7 @@ def getNthPermutation(chars, n):
     return nthPermutation
 
 
-# Get the nth permutation of the input character array assuming
+# Get the permutation number of the input character array assuming
 # permutation 1 is the input sorted.
 
 
