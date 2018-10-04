@@ -50,13 +50,14 @@ So for the above example, setSize = 6 // 3 = 2.
 The function use the set size to determine which set of permutations it will focus on.  If we are trying to find the 3rd permutation then the function will evaluate the following condition:
 ```
 nthPerm % setSize != 0
-3 % 2 = 1, 1 != 0
+3 % 2 = 1, 1 != 0 == true
 ```
 If the condition evaluates to anything except 0, it means the permutation it is interested in is not the last permutation in the set.  In this case, the function will pop the character located at:
 ```
 chars[nthPerm // setSize] === chars[3 // 2] === chars[1] = '1'
 ```
 The new character array is now ['1'], and the old character array is now ['0','2'].  Because index 1 was popped from the char array, the new permutations will represent the second set with the first character removed.  The function resets the setSize and permutations accordingly to deal with these new permutations.
+
 Set
 ```
 3. ['1','0','2']
@@ -75,7 +76,7 @@ setSize = permutations // len(chars) === 2 // 2 = 1
 Again, the function evaluates the condition:
 ```
 nthPerm % setSize != 0
-1 % 1 = 0, 0 == 0
+1 % 1 = 0, 0 != 0 == false
 ```
 Since it evaluates to zero, the function now uses a slightly different equation to extract the next character:
 ```
