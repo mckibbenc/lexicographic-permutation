@@ -43,20 +43,26 @@ First, the function would find the starting set size for the 6 permutations we c
 ```
 Fortunately, there is a mathematical relationship between # of permutations and the set size.  It is defined as:
 ```
-setSize = permutations // len(chars) ## // is integer division
+setSize = permutations // len(chars)  # // is integer division
 ```
 So for the above example, setSize = 6 // 3 = 2.
 
-The function use the set size to determine which group of permutations it will focus on.  If we are trying to find the 3rd permutation then, the function will evaluate the following condition:
+The function use the set size to determine which set of permutations it will focus on.  If we are trying to find the 3rd permutation then the function will evaluate the following condition:
 ```
 nthPerm % setSize != 0
 3 % 2 = 1, 1 != 0
 ```
-If the condition evaluates to anything except 0, it means the permutation it is interested in is not the last permutation in the group.  In this case, the function will pop the character located at:
+If the condition evaluates to anything except 0, it means the permutation it is interested in is not the last permutation in the set.  In this case, the function will pop the character located at:
 ```
 chars[nthPerm // setSize] === chars[3 // 2] === chars[1] = '1'
 ```
-so, our new character array is now ['1'], and our old character array is now ['0','2'].  The function resets the setSize and permutations accordingly to deal with the new permutations:
+The new character array is now ['1'], and the old character array is now ['0','2'].  Because index 1 was popped from the char array, the new permutations will represent the second set with the first character removed.  The function resets the setSize and permutations accordingly to deal with these new permutations.
+Set
+```
+3. ['1','0','2']
+4. ['1','2','0']
+```
+becomes...
 ```
 1. ['0','2']
 2. ['2','0']
