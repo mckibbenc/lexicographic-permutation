@@ -50,7 +50,7 @@ So for the above example, setSize = 6 // 3 = 2.
 The function use the set size to determine which set of permutations it will focus on.  If we are trying to find the 3rd permutation then the function will evaluate the following condition:
 ```
 nthPerm % setSize != 0
-3 % 2 = 1, 1 != 0 == true
+3 % 2 = 1, 1 != 0
 ```
 If the condition evaluates to anything except 0, it means the permutation it is interested in is not the last permutation in the set.  In this case, the function will pop the character located at:
 ```
@@ -76,7 +76,7 @@ setSize = permutations // len(chars) === 2 // 2 = 1
 Again, the function evaluates the condition:
 ```
 nthPerm % setSize != 0
-1 % 1 = 0, 0 != 0 == false
+1 % 1 = 0, 0 == 0
 ```
 Since it evaluates to zero, the function now uses a slightly different equation to extract the next character:
 ```
@@ -92,3 +92,46 @@ print(getPermutationNumber(chars))
 # console: 3
 ```
 Like the previous algorithm, this one also operates with a time complexity of O(n).
+
+### How it works
+Let's say we have an array of characters called **chars** with the values ['1','0','2'].  This array has six possible permutations, and we want to find the permutation number that represents this array.
+```
+1. ['0','1','2']
+2. ['0','2','1']
+3. ['1','0','2']
+4. ['1','2','0']
+5. ['2','0','1']
+6. ['2','1','0']
+```
+The getPermutationNumber(chars) function starts by sorting **chars** in ascending ASCII order.  This sorted array becomes permutation 1.  The function also calculates the total **permutations** and the **setSize**.  **nthPermutation** starts at 0 because we add to it throughout the loop.
+```
+sortedChars = ['0','1','2']
+permutations = 6
+setSize = 2
+nthPermutation = 0
+```
+The function loops 3 times because our **chars** array has 3 items.  For each iteration of the loop, the function will add to **nthPermutation** the **setSize** multiplied by the index number in **sortedChars** that contains the first item in the **chars** array.
+```
+chars = ['1','0','2']
+sortedChars = ['0','1','2']
+i = 0
+nthPermutation += setSize * sortedChars.index(chars[i])
+                = 2 * sortedCharArray.index('1')
+                = 2 * 1
+                = 2
+nthPermutation = 2
+```
+The first iteration of the loop tells us that the nthPermutation of **chars** is at least 2, because the set size is two, and character '1' appears in the second set of permutations as indicated by it's position in **sortedChars**.  To prepare for the second loop, the function removes the character '1' from **sortedChars**. It then recalculates **permutations** and **setSize** and **nthPermutation**.
+```
+chars = ['1','0','2']
+sortedChars = ['0','2']
+permutations = 2
+setSize = 1
+i = 1
+nthPermutation += setSize * sortedChars.index(chars[i])
+                = 1 * sortedCharArray.index('0')
+                = 1 * 0
+                = 0
+nthPermutation = 2
+```
+The loop terminates since it is now on the last element and there is no need to calculate further.  Instead, it just adds 1 to nthPermutation, which now equals 3.
