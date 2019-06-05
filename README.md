@@ -1,3 +1,6 @@
+# Background
+This project came from solving project euler problem [24](https://projecteuler.net/problem=24).  I had so much fun coming up with this algorithm that I took it even further by building more functions around computing permutations and writing these docs.
+
 # Calculating the total possible permutations
 Calculating the total permutatations for an array of characters is defined by the factorial equation, where *n* is the size of the input array.
 ```
