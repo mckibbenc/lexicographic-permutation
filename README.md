@@ -9,7 +9,7 @@ n! = n(n-1)(n-2)...(2)(1)
 This library contains two functions for calculating the number of permutations.  One is recursive, as it is the definition of a factorial, but it has a space limitation for how large *n* can be.  The other is iterative for better performance.  Both functions take the same input and produce the same output.
 
 # Getting the *nth* permutation of a character array
-To get the nth permutation of an array of characters, use the following code example, where **chars** is an array of characters, and **nthPerm** is an integer representing the nth permutation of the character array, assuming permutation one is the same as **chars**.
+To get the nth permutation of an array of characters, use the following code example, where **chars** is an array of characters, and **nthPerm** is an integer representing the nth permutation of the character array, assuming permutation one is character array sorted in ascending alphanumeric order.
 ```python
 chars = ['0','1','2']
 nthPerm = 3
