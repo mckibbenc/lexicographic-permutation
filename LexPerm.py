@@ -20,11 +20,13 @@ def calcPermsRecursive(n):
 
 
 # Get the nth permutation of the input character array, where
-# permutation 1 is the input character array.
+# permutation 1 is the input character array sorted in ascending order.
 # -- a set is the number of permutatations where index 0 is constant
 #    (ex. [0,1,2] and [0,2,1] are a set)
 
 def getNthPermutation(chars, nthPerm):
+    chars.sort()
+
     if (nthPerm == 0):
         return []
 
